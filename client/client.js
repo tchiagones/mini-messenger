@@ -14,16 +14,23 @@ Template.input.events = {
   'keydown input#message' : function (event) {
 	  debugger;
     if (event.which == 13) { // 13 is the enter key event
-      var message = document.getElementById('message');
+      var message = document.getElementById('message').value;
 	  var name = document.getElementById('user').value;
 	  if(!name)
 		  name = 'Anonymous';
  
-      if (message.value != '') {
+      if(!message)
+          alert('escreva uma mensagem.');
+          
+      /*if (message != '') {
         Messages.insert({
           name: name,
-          message: message.value,
+          message: message,
           time: Date.now(),
+        });*/
+        
+        Meteor.call("addMessage",name,message,function(error , questionId){
+          console.log('added message with Id .. ' + questionId);
         });
  
         document.getElementById('message').value = '';
@@ -31,4 +38,10 @@ Template.input.events = {
       }
     }
   }
-}
+
+Template.registerHelper('formatDate', function(date) {
+  return moment(date).format('DD/MM/YYYY');
+});
+/*Template.registerHelper("formatDate", function(timestamp) {
+    return new Date(timestamp).toString('yyyy-MM-dd')
+});*/
