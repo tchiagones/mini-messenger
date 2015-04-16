@@ -4,6 +4,7 @@ signInBtn.classList.add('btn');*/
 /**
 * Templates
 */
+
 Template.messages.helpers({
     messages: function() {
         return Messages.find({}, { sort: { time: -1}});
@@ -21,16 +22,9 @@ Template.input.events = {
  
       if(!message)
           alert('escreva uma mensagem.');
-          
-      /*if (message != '') {
-        Messages.insert({
-          name: name,
-          message: message,
-          time: Date.now(),
-        });*/
-        
-        Meteor.call("addMessage",name,message,function(error , questionId){
-          console.log('added message with Id .. ' + questionId);
+
+        Meteor.call("addMessage",name,message,function(error , messageId){
+          console.log('message Id: ' + messageId);
         });
  
         document.getElementById('message').value = '';
@@ -40,11 +34,7 @@ Template.input.events = {
   }
 
 Template.registerHelper('formatDate', function(date) {
-    debugger;
     var data = new Date(date);
     var formated = data.toString
   return moment(date).format('DD/MM/YYYY hh:mm:ss');
 });
-/*Template.registerHelper("formatDate", function(timestamp) {
-    return new Date(timestamp).toString('yyyy-MM-dd')
-});*/
