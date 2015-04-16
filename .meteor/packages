@@ -6,8 +6,8 @@
 
 meteor-platform
 autopublish
-insecure
 bootstrap
 accounts-ui
 accounts-google
 accounts-facebook
+momentjs:moment
