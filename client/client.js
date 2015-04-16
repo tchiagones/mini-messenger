@@ -40,7 +40,10 @@ Template.input.events = {
   }
 
 Template.registerHelper('formatDate', function(date) {
-  return moment(date).format('DD/MM/YYYY');
+    debugger;
+    var data = new Date(date);
+    var formated = data.toString
+  return moment(date).format('DD/MM/YYYY hh:mm:ss');
 });
 /*Template.registerHelper("formatDate", function(timestamp) {
     return new Date(timestamp).toString('yyyy-MM-dd')
