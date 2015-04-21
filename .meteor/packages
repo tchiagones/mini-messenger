@@ -11,3 +11,5 @@ accounts-ui
 accounts-google
 accounts-facebook
 momentjs:moment
+jquery
+iron:router
