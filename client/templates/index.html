@@ -1,42 +1,43 @@
 <template name="index">
     <div class="container-body">
-        {{> appBody}} {{> messages}}
+        <div class="body-messages">
+            {{> appBody}} {{> messages}}
+        </div>
     </div>
 </template>
+
 <template name="appBody">
     {{> welcome }} {{>input}}
 </template>
 
 <template name="welcome">
-    <p>
-        {{> user}}
-    </p>
+    {{> user}}
 </template>
 
 <template name="deleteButton">
-    <a name="trash" href="#" class="button-trash align-right">
-        <img class="trash-icon" src="/resources/images/trash.png" />
-    </a>
+    <div class="trash-icon-layer">
+        <a name="trash" href="#" class="button-trash align-right">
+            <img class="trash-icon" src="/resources/images/trash-white.png" />
+        </a>
+    </div>
 </template>
 
 <template name="messages">
     {{#each messages}}
     <div class="message-box-layer box" id="sortable">
-        <div>
+        <div class="message-text-layer">
             sent at: {{formatDate time}} - <strong>{{name}}:</strong> {{message}}
         </div> {{> deleteButton}}
-        <br>
     </div>
-    <br> {{/each}}
+    {{/each}}
 </template>
 
 <template name="input">
-    <p>Message:
-        <input type="text" id="message">
-    </p>
+    <br>Message:
+    <input class="input-message" type="text" id="message">
 </template>
 
 <template name="user">
-    Welcome
+    Welcome,
     <input type="text" id="user"> (use a nickname,an alias, whatever you want..)
 </template>

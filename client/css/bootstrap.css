@@ -4922,7 +4922,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
 .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px;
-    line-height: 20px
+    line-height: 30px
 }
 
 @media (max-width: 767px) {
@@ -4954,7 +4954,7 @@ textarea.input-group-sm>.input-group-btn>.btn {
         margin: 0
     }
     .navbar-nav>li {
-        float: left
+        float: right
     }
     .navbar-nav>li>a {
         padding-top: 15px;

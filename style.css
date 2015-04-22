@@ -1,4 +1,4 @@
-.animated {
+/*.animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
@@ -29,6 +29,13 @@
     -webkit-animation-duration: 0.6s;
     animation-duration: 0.6s;
 }
+*/
+
+.minwidth {
+    min-width: 100px;
+    width: auto !important;
+    width: 100px;
+}
 
 html {
     padding: 10px;
@@ -40,12 +47,20 @@ html {
 }
 
 .container-body {
-    margin-top: 70px;
+    margin-top: -50px;
     margin-left: 60px;
     position: fixed;
     overflow-y: scroll;
     height: 100%;
     width: 100%;
+}
+
+.body-messages {
+    margin-top: 10px;
+}
+
+.body-p {
+    margin-top: 10px;
 }
 
 .login-link-and-dropdown-list {
@@ -62,10 +77,13 @@ html {
     padding: 10px;
     width: 70%;
     height: 50px;
-    background: #2DA1F4;
 }
 
 .message-box-layer {
+    margin-top: 20px;
+    color: #FFFFFF;
+    background: #2DA1F4;
+    height: auto;
     position: relative;
     -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
     -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -102,7 +120,17 @@ html {
     max-height: 20px;
     position: relative;
     max-width: 20px;
-    margin-top: -50px;
+    margin-top: -60px;
+}
+
+.trash-icon-layer {
+    color: #FFFFFF;
+    background: #2DA1F4;
+    height: auto;
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .button-trash {
@@ -115,5 +143,15 @@ html {
     border-radius: 5px;
     color: white;
     font-weight: bold;
+}
+
+.message-text-layer {
+    width: inherit, 80%;
+    word-wrap: break-word;
+}
+
+.input-message {
+    min-height: 100px;
+    width: 500px;
 }
 /*---------------------------------------------------------------------------------------*/
