@@ -4800,7 +4800,8 @@ textarea.input-group-sm>.input-group-btn>.btn {
         box-shadow: none
     }
     .navbar-collapse.collapse {
-        display: block !important;
+        display: flex !important;
+        float: right;
         height: auto !important;
         padding-bottom: 0;
         overflow: visible !important

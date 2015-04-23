@@ -1,7 +1,10 @@
 <template name="index">
     <div class="container-body">
         <div class="body-messages">
-            {{> appBody}} {{> messages}}
+            {{> appBody}}
+            <div class="container-messages">
+                {{> messages}}
+            </div>
         </div>
     </div>
 </template>
@@ -25,19 +28,23 @@
 <template name="messages">
     {{#each messages}}
     <div class="message-box-layer box" id="sortable">
-        <div class="message-text-layer">
-            sent at: {{formatDate time}} - <strong>{{name}}:</strong> {{message}}
-        </div> {{> deleteButton}}
+        {{> deleteButton}} sent at: {{formatDate time}} - <strong>{{name}}:</strong>
+        <div class="message-text">{{message}}</div>
     </div>
     {{/each}}
 </template>
 
 <template name="input">
-    <br>Message:
-    <input class="input-message" type="text" id="message">
+    <div class="common-box">
+        <label class="left">Message: </label>
+        <input class="input-message" type="text" id="message">
+    </div>
 </template>
 
 <template name="user">
-    Welcome,
-    <input type="text" id="user"> (use a nickname,an alias, whatever you want..)
+    <div class="common-box">
+        <label class="left">Welcome, </label>
+        <input type="text" id="user">
+        <label class="right">(use a nickname, an alias, whatever you want..) or </label> {{> loginButtons}}
+    </div>
 </template>
