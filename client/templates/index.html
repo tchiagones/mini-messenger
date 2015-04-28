@@ -1,10 +1,7 @@
 <template name="index">
     <div class="container-body">
         <div class="body-messages">
-            {{> appBody}}
-            <div class="container-messages">
-                {{> messages}}
-            </div>
+            {{> appBody}} {{> messages}}
         </div>
     </div>
 </template>
@@ -24,27 +21,23 @@
         </a>
     </div>
 </template>
-
+<!--{{#if {{sessionId == Meteor.default_connection._lastSessionId}}right{{/if}}-->
 <template name="messages">
     {{#each messages}}
     <div class="message-box-layer box" id="sortable">
-        {{> deleteButton}} sent at: {{formatDate time}} - <strong>{{name}}:</strong>
-        <div class="message-text">{{message}}</div>
+        <div class="message-text-layer">
+            sent at: {{formatDate time}} - <strong>{{name}}:</strong> {{message}}
+        </div> {{> deleteButton}}
     </div>
     {{/each}}
 </template>
 
 <template name="input">
-    <div class="common-box">
-        <label class="left">Message: </label>
-        <input class="input-message" type="text" id="message">
-    </div>
+    <br>Message:
+    <input class="input-message" type="text" id="message">
 </template>
 
 <template name="user">
-    <div class="common-box">
-        <label class="left">Welcome, </label>
-        <input type="text" id="user">
-        <label class="right">(use a nickname, an alias, whatever you want..) or </label> {{> loginButtons}}
-    </div>
+    Welcome,
+    <input type="text" id="user"> (use a nickname,an alias, whatever you want..)
 </template>
