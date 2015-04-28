@@ -17,12 +17,13 @@ Template.input.events = {
         if (event.which == 13) { // 13 is the 'enter' key event
             var message = document.getElementById('message').value;
             var name = document.getElementById('user').value;
+            var currentSessionId = Meteor.default_connection._lastSessionId;
             if (!name)
                 name = 'Anonymous';
 
             if (!message) return alert('escreva uma mensagem.');
 
-            Meteor.call("addMessage", name, message, function (error, messageId) {
+            Meteor.call("addMessage", name, message, currentSessionId, function (error, messageId) {
                 console.log('message Id: ' + messageId);
             });
 

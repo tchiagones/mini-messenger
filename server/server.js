@@ -4,13 +4,14 @@ Meteor.startup(function () {
 });
 
 Meteor.methods({
-    addMessage: function (name, message) {
+    addMessage: function (name, message, sessionId) {
         console.log('Adding message');
         var messageId = Messages.insert({
             'name': name,
             'message': message,
             'userId': Meteor.userId(),
-            'time': Date.now()
+            'time': Date.now(),
+            'sessionId': sessionId
         });
         return messageId;
     },
