@@ -9,6 +9,9 @@ Template.messages.helpers({
                 time: -1
             }
         });
+    },
+    users: function () {
+        return Meteor.users.find();
     }
 })
 
@@ -18,13 +21,13 @@ Template.input.events = {
             var message = document.getElementById('message').value;
             var name = document.getElementById('user').value;
             var currentSessionId = Meteor.default_connection._lastSessionId;
-            if (!name)
-                name = 'Anonymous';
 
             if (!message) return alert('escreva uma mensagem.');
 
+            if (!Meteor.userId()) name = 'Anonymous';
+
             Meteor.call("addMessage", name, message, currentSessionId, function (error, messageId) {
-                console.log('message Id: ' + messageId);
+                /*console.log('message Id: ' + messageId);*/
             });
 
             document.getElementById('message').value = '';
@@ -48,3 +51,20 @@ Template.registerHelper('formatDate', function (date) {
     var formated = data.toString
     return moment(date).format('DD/MM/YYYY hh:mm');
 });
+
+/*
+Meteor.authenticate = function (password, callback) {
+    //create a login request with admin: true, so our loginHandler can handle this request
+    debugger;
+    var loginRequest = {
+        admin: true,
+        password: password
+    };
+
+    //send the login request
+    Accounts.callLoginMethod({
+        methodArguments: [loginRequest],
+        userCallback: callback
+    });
+};
+*/
