@@ -47,8 +47,11 @@ Template.deleteButton.events = {
 
 }
 
-Template.registerHelper('formatDate', function (date) {
-    var data = new Date(date);
-    var formated = data.toString
-    return moment(date).format('DD/MM/YYYY hh:mm');
+Template.registerHelper('formatMessageDate', function (date) {
+    var messageDate = new Date(date).setHours(0, 0, 0, 0, 0);
+    var today = new Date().setHours(0, 0, 0, 0, 0);
+    if (today === messageDate) var messageDate = 'today ' + moment(date).format('hh:mm');
+    else messageDate = moment(date).format('DD/MM/YYYY hh:mm');
+
+    return messageDate;
 });

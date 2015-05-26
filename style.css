@@ -1,3 +1,27 @@
+/* Tablet Landscape */
+
+@media screen and (max-width: 1060px) {
+    #primary {
+        width: 67%;
+    }
+    #secondary {
+        width: 30%;
+        margin-left: 3%;
+    }
+}
+/* Tabled Portrait */
+
+@media screen and (max-width: 768px) {
+    #primary {
+        width: 100%;
+    }
+    #secondary {
+        width: 100%;
+        margin: 0;
+        border: none;
+    }
+}
+
 .minwidth {
     min-width: 100px;
     width: auto !important;
@@ -87,6 +111,10 @@ html {
     right: 0;
     -moz-border-radius: 100px / 10px;
     border-radius: 100px / 10px;
+}
+
+.messageInfo {
+    font-size: 10px;
 }
 
 .message-box-layer:after {

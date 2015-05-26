@@ -28,7 +28,9 @@
 <template name="messages">
     {{#each messages}}
     <div class="message-box-layer box" id="sortable">
-        {{> deleteButton}} sent at: {{formatDate time}} - <strong>{{name}}:</strong>
+        {{> deleteButton}}
+        <span class="messageInfo">{{formatMessageDate time}} - </span>
+        <strong>{{name}}:</strong>
         <div class="message-text">{{message}}</div>
     </div>
     {{/each}}
