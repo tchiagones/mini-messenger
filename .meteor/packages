@@ -5,9 +5,10 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 bootstrap
 accounts-ui
 accounts-google
 accounts-facebook
 momentjs:moment
+jquery
+iron:router

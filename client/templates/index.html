@@ -1,0 +1,52 @@
+<template name="index">
+    <div class="container-body">
+        <div class="body-messages">
+            {{> appBody}}
+            <div class="container-messages">
+                {{> messages}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="appBody">
+    {{> welcome }} {{>input}}
+</template>
+
+<template name="welcome">
+    {{> user}}
+</template>
+
+<template name="deleteButton">
+    <div class="trash-icon-layer">
+        <a name="trash" href="#" class="button-trash align-right">
+            <img class="trash-icon" src="/resources/images/trash-white.png" />
+        </a>
+    </div>
+</template>
+
+<template name="messages">
+    {{#each messages}}
+    <div class="message-box-layer box" id="sortable">
+        {{> deleteButton}}
+        <span class="messageInfo">{{formatMessageDate time}} - </span>
+        <strong>{{name}}:</strong>
+        <div class="message-text">{{message}}</div>
+    </div>
+    {{/each}}
+</template>
+
+<template name="input">
+    <div class="common-box">
+        <label class="left">Message: </label>
+        <input class="input-message" type="text" id="message">
+    </div>
+</template>
+
+<template name="user">
+    <div class="common-box">
+        <label class="left">Welcome, </label>
+        <input type="text" id="user">
+        <label class="right">(use a nickname, an alias, whatever you want..) or </label> {{> loginButtons}}
+    </div>
+</template>
