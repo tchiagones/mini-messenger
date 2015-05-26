@@ -50,7 +50,8 @@ html {
 .container-messages {
     position: fixed;
     overflow-y: scroll;
-    height: 420px;
+    /*height: 420px;*/
+    height: 60%;
     width: 80%;
     border: rgb(228, 230, 232);
     border-style: solid;
