@@ -1,6 +1,7 @@
 /**
  * Templates
  */
+Meteor.subscribe("Messages");
 
 Template.messages.helpers({
     messages: function () {
@@ -51,20 +52,3 @@ Template.registerHelper('formatDate', function (date) {
     var formated = data.toString
     return moment(date).format('DD/MM/YYYY hh:mm');
 });
-
-/*
-Meteor.authenticate = function (password, callback) {
-    //create a login request with admin: true, so our loginHandler can handle this request
-    debugger;
-    var loginRequest = {
-        admin: true,
-        password: password
-    };
-
-    //send the login request
-    Accounts.callLoginMethod({
-        methodArguments: [loginRequest],
-        userCallback: callback
-    });
-};
-*/
