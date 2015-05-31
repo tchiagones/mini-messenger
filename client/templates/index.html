@@ -1,52 +1,95 @@
 <template name="index">
-    <div class="container-body">
-        <div class="body-messages">
-            {{> appBody}}
-            <div class="container-messages">
-                {{> messages}}
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="container">
+                {{> appBody}} {{> messages}}
             </div>
         </div>
     </div>
 </template>
 
 <template name="appBody">
-    {{> welcome }} {{>input}}
+    <div class="row">
+        <form class="col s12">
+            {{> welcome }} {{>input}}
+        </form>
+    </div>
 </template>
 
 <template name="welcome">
-    {{> user}}
+    <div class="row">
+        <div class="input-field col s8">
+            <input id="user" type="text">
+            <label for="user">(nickname, alias, whatever..)</label>
+        </div>
+        <div class="input-field col s4">
+            <br> or {{> loginButtons}}
+        </div>
+    </div>
 </template>
 
 <template name="deleteButton">
-    <div class="trash-icon-layer">
-        <a name="trash" href="#" class="button-trash align-right">
-            <img class="trash-icon" src="/resources/images/trash-white.png" />
-        </a>
+    <a name="trash" href="#" class="button-trash align-right">
+        <i class="small mdi-action-delete white-text"></i>
+    </a>
+</template>
+
+<template name="message">
+    <div class="row">
+        {{#if isOwner}}
+        <div class="col s12 m8 left">
+            <div class="card light-blue darken-1">
+                <div class="card-content white-text">
+                    <span class="badge">{{> deleteButton}}</span>
+                    <p>
+                        <span class="messageInfo">{{formatMessageDate time}} - </span>
+                        <strong>{{name}}:</strong>
+                    </p>
+                    <div class="container left">
+                        <div class="row">
+                            <p>
+                                <span class="message-text">{{message}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <div class="col s12 m8 right">
+            <div class="card light-blue lighten-1">
+                <div class="card-content white-text">
+                    <p>
+                        <span class="messageInfo">{{formatMessageDate time}} - </span>
+                        <strong>{{name}}:</strong>
+                    </p>
+                    <div class="container left">
+                        <div class="row">
+                            <p>
+                                <span class="message-text">{{message}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
     </div>
 </template>
 
 <template name="messages">
-    {{#each messages}}
-    <div class="message-box-layer box" id="sortable">
-        {{> deleteButton}}
-        <span class="messageInfo">{{formatMessageDate time}} - </span>
-        <strong>{{name}}:</strong>
-        <div class="message-text">{{message}}</div>
+    <div class="row">
+        <div class="contaier container-messages">
+            {{#each messages}} {{> message}} {{/each}}
+        </div>
     </div>
-    {{/each}}
 </template>
 
 <template name="input">
-    <div class="common-box">
-        <label class="left">Message: </label>
-        <input class="input-message" type="text" id="message">
-    </div>
-</template>
-
-<template name="user">
-    <div class="common-box">
-        <label class="left">Welcome, </label>
-        <input type="text" id="user">
-        <label class="right">(use a nickname, an alias, whatever you want..) or </label> {{> loginButtons}}
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="message" type="text">
+            <label for="message">your message</label>
+        </div>
     </div>
 </template>

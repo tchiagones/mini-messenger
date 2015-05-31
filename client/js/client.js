@@ -1,7 +1,10 @@
-/**
- * Templates
- */
 Meteor.subscribe("Messages");
+
+Meteor.users.deny({
+    update: function () {
+        return true;
+    }
+});
 
 Template.messages.helpers({
     messages: function () {
@@ -14,20 +17,35 @@ Template.messages.helpers({
     users: function () {
         return Meteor.users.find();
     }
-})
+});
+
+Template.message.helpers({
+    isOwner: function () {
+        var response = false;
+
+        if (!this.userId) return;
+
+        if (this.userId == Meteor.userId()) response = true;
+
+        return response;
+    }
+});
 
 Template.input.events = {
     'keydown input#message': function (event) {
         if (event.which == 13) { // 13 is the 'enter' key event
             var message = document.getElementById('message').value;
-            var name = document.getElementById('user').value;
-            var currentSessionId = Meteor.default_connection._lastSessionId;
 
             if (!message) return alert('escreva uma mensagem.');
+            debugger;
+            var name = document.getElementById('user').value;
 
-            if (!Meteor.userId()) name = 'Anonymous';
+            var userId = Meteor.userId();
 
-            Meteor.call("addMessage", name, message, currentSessionId, function (error, messageId) {
+            if (!Meteor.userId() &&
+                name == "") name = 'Anonymous';
+
+            Meteor.call("addMessage", name, message, userId, function (error, messageId) {
                 /*console.log('message Id: ' + messageId);*/
             });
 

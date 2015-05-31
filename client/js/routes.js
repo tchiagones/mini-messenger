@@ -2,7 +2,7 @@
 Routes
 */
 Router.route('/', function () {
-    this.render('index');
+    this.render('home');
 });
 
 Router.route('/index', function () {
