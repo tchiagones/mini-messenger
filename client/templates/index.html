@@ -8,6 +8,23 @@
     </div>
 </template>
 
+<template name="lateralChatRooms">
+    <nav>
+        <div class="nav-wrapper container">
+            <ul class="side-nav" id="mobile-demo">
+                <li><a href="sass.html">Sass</a>
+                </li>
+                <li><a href="components.html">Components</a>
+                </li>
+                <li><a href="javascript.html">Javascript</a>
+                </li>
+                <li><a href="mobile.html">Mobile</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</template>
+
 <template name="appBody">
     <div class="row">
         <form class="col s12">
@@ -20,7 +37,7 @@
     <div class="row">
         <div class="input-field col s8">
             <input id="user" type="text">
-            <label for="user">(nickname, alias, whatever..)</label>
+            <label for="user">(your alias..)</label>
         </div>
         <div class="input-field col s4">
             <br> or {{> loginButtons}}

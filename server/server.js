@@ -1,30 +1,5 @@
-Meteor.startup(function () {
-    // code to run on server at startup
-    console.log('mini messenger has started');
-});
-
-Meteor.publish('groupUsers', function (groupId) {
-    check(groupId, String);
-    var group = Groups.findOne(groupId);
-    var selector = {
-        _id: {
-            $in: group.members
-        }
-    };
-    var options = {
-        fields: {
-            username: 1
-        }
-    };
-    return Meteor.users.find(selector, options);
-});
-
-Meteor.publish('Messages', function () {
-    return Messages.find();
-});
-
 Meteor.methods({
-    addMessage: function (name, message, sessionId) {
+    addMessage: function (name, message) {
         console.log('Adding message');
         var userName = name;
         var userId = Meteor.userId();
@@ -33,15 +8,25 @@ Meteor.methods({
             var user = Meteor.users.findOne({
                 _id: userId.toString()
             });
-            userName = user.profile.name;
+            if (!user.username)
+                userName = user.profile.name;
+            else
+                userName = user.username;
         }
+
+        //if (!chatRoomId)
+        //  ChatRooms.find({
+        //    name: 'global'
+        //});
+
         var messageId = Messages.insert({
             'name': userName,
             'message': message,
             'userId': Meteor.userId(),
-            'time': Date.now(),
-            'sessionId': sessionId
+            'time': Date.now()
         });
+
+        //console.log('adicionando ou atualizando chatroom');
 
         return messageId;
     },
@@ -75,10 +60,12 @@ Meteor.methods({
     }
 });
 
-
-var getUser = function (userId) {
-    var user = Meteor.users.find({
-        id: userId
-    })
-    return user;
+/*
+var AddChatRoom = function (messageId, userId) {
+    ChatRooms.insert({
+        messageId: messageId,
+        userId: userId
+    });
 }
+
+*/

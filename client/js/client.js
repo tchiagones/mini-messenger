@@ -1,4 +1,5 @@
 Meteor.subscribe("Messages");
+Meteor.subscribe("ChatRooms");
 
 Meteor.users.deny({
     update: function () {
@@ -39,13 +40,13 @@ Template.input.events = {
             if (!message) return alert('escreva uma mensagem.');
             debugger;
             var name = document.getElementById('user').value;
-
+            var chatRoomId;
             var userId = Meteor.userId();
 
             if (!Meteor.userId() &&
                 name == "") name = 'Anonymous';
 
-            Meteor.call("addMessage", name, message, userId, function (error, messageId) {
+            Meteor.call("addMessage", name, message, function (error, messageId) {
                 /*console.log('message Id: ' + messageId);*/
             });
 
@@ -62,7 +63,6 @@ Template.deleteButton.events = {
                 console.log('Message removed');
             });
     }
-
 }
 
 Template.registerHelper('formatMessageDate', function (date) {
@@ -72,4 +72,8 @@ Template.registerHelper('formatMessageDate', function (date) {
     else messageDate = moment(date).format('DD/MM/YYYY hh:mm');
 
     return messageDate;
+});
+
+Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
 });
