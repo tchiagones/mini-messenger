@@ -1,5 +1,5 @@
 Meteor.methods({
-    addMessage: function (name, message) {
+    addMessage: function (name, message, roomId) {
         console.log('Adding message');
         var userName = name;
         var userId = Meteor.userId();
@@ -14,19 +14,36 @@ Meteor.methods({
                 userName = user.username;
         }
 
-        //if (!chatRoomId)
-        //  ChatRooms.find({
-        //    name: 'global'
-        //});
+        console.log("roomId before: " + roomId);
+
+        if (!roomId) {
+            var room = Rooms.find({
+                name: "global"
+            });
+
+            console.log("room id " + room._id, " name " + room.name);
+
+            if (!room) {
+                roomId = Rooms.insert({
+                    'name': "global",
+                    'users': [userId]
+                });
+            } else {
+                roomId = room._id;
+            }
+        }
+
+        console.log("roomId: " + roomId);
 
         var messageId = Messages.insert({
             'name': userName,
             'message': message,
             'userId': Meteor.userId(),
-            'time': Date.now()
+            'time': Date.now(),
+            'roomId': roomId
         });
 
-        //console.log('adicionando ou atualizando chatroom');
+        console.log('adicionando ou atualizando room');
 
         return messageId;
     },
@@ -59,13 +76,3 @@ Meteor.methods({
         });
     }
 });
-
-/*
-var AddChatRoom = function (messageId, userId) {
-    ChatRooms.insert({
-        messageId: messageId,
-        userId: userId
-    });
-}
-
-*/

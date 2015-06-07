@@ -1,5 +1,5 @@
 Meteor.subscribe("Messages");
-Meteor.subscribe("ChatRooms");
+Meteor.subscribe("Rooms");
 
 Meteor.users.deny({
     update: function () {
@@ -19,6 +19,13 @@ Template.messages.helpers({
         return Meteor.users.find();
     }
 });
+
+Template.rooms.helpers({
+    rooms: function () {
+        return Rooms.find();
+    }
+});
+
 
 Template.message.helpers({
     isOwner: function () {
@@ -40,18 +47,17 @@ Template.input.events = {
             if (!message) return alert('escreva uma mensagem.');
             debugger;
             var name = document.getElementById('user').value;
-            var chatRoomId;
+            var roomId;
             var userId = Meteor.userId();
 
             if (!Meteor.userId() &&
                 name == "") name = 'Anonymous';
 
             Meteor.call("addMessage", name, message, function (error, messageId) {
-                /*console.log('message Id: ' + messageId);*/
+                console.log('message Id: ' + messageId);
             });
 
-            document.getElementById('message').value = '';
-            message.value = '';
+            Materialize.toast('message added!', 4000)
         }
     }
 }

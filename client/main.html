@@ -1,0 +1,24 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>Mini Messenger</title>
+
+    <!-- CSS  -->
+    <link href="compatibility/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="compatibility/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+</head>
+
+<body>
+    {{> menu}}
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="compatibility/materialize/js/materialize.js"></script>
+    <script src="compatibility/materialize/js/init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.collapsible').collapsible({
+                accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+            });
+        });
+    </script>
+</body>

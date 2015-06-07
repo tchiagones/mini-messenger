@@ -1,8 +1,14 @@
 <template name="menu">
-    <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="\" class="brand-logo">Mini Messenger</a>
-            <ul class="right hide-on-med-and-down">
-                <!--
+    <div class="navbar-fixed">
+        <nav class="light-blue lighten-1" role="navigation">
+            <ul class="left hide-on-med-and-down">
+                <li class="left">
+                    <a href="#"><i class="mdi-navigation-menu small"></i></a>
+                </li>
+            </ul>
+            <div class="nav-wrapper container"><a id="logo-container" href="\" class="brand-logo">Mini Messenger</a>
+                <ul class="right hide-on-med-and-down">
+                    <!--
                 <li>
                     <div class="container">
                         <form>
@@ -16,22 +22,26 @@
                     </div>
                 </li>
                 -->
-                <li><a href="\index">Chat</a>
-                </li>
-                <li><a href="\about">About</a>
-                </li>
-                <li><a href="\contact">Contact</a>
-                </li>
-            </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="\index">Chat</a>
-                </li>
-                <li><a href="\about">About</a>
-                </li>
-                <li><a href="\contact">Contact</a>
-                </li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        </div>
-    </nav>
+                    <li><a href="\index">Chat</a>
+                    </li>
+                    <li><a href="\about">About</a>
+                    </li>
+                    <li><a href="\contact">Contact</a>
+                    </li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav blue-text">
+                    <li class="right"><i class="mdi-navigation-menu"></i>
+                    </li>
+                    <li><a href="\index">Chat</a>
+                    </li>
+                    <li><a href="\about">About</a>
+                    </li>
+                    <li><a href="\contact">Contact</a>
+                    </li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            </div>
+        </nav>
+    </div>
+
 </template>

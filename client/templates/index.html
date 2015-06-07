@@ -1,4 +1,5 @@
 <template name="index">
+    {{> rooms}}
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
             <div class="container">
@@ -8,7 +9,7 @@
     </div>
 </template>
 
-<template name="lateralChatRooms">
+<template name="lateralRooms">
     <nav>
         <div class="nav-wrapper container">
             <ul class="side-nav" id="mobile-demo">
@@ -51,6 +52,10 @@
     </a>
 </template>
 
+<template name="romm">
+
+</template>
+
 <template name="message">
     <div class="row">
         {{#if isOwner}}
@@ -60,7 +65,9 @@
                     <span class="badge">{{> deleteButton}}</span>
                     <p>
                         <span class="messageInfo">{{formatMessageDate time}} - </span>
-                        <strong>{{name}}:</strong>
+                        <a href="#" class="white-text message-user-name">
+                            <strong>{{name}}:</strong>
+                        </a>
                     </p>
                     <div class="container left">
                         <div class="row">
@@ -78,7 +85,9 @@
                 <div class="card-content white-text">
                     <p>
                         <span class="messageInfo">{{formatMessageDate time}} - </span>
-                        <strong>{{name}}:</strong>
+                        <a href="#" class="white-text">
+                            <strong>{{name}}:</strong>
+                        </a>
                     </p>
                     <div class="container left">
                         <div class="row">
@@ -101,6 +110,34 @@
         </div>
     </div>
 </template>
+
+<template name="rooms">
+    <!--
+<div class="container left">
+        <div class="contaier container-rooms">
+            <ul class="collapsible" data-collapsible="accordion">
+                {{#each rooms}}
+                <li>
+                    <div class="collapsible-header">{{name}}</div>
+                    <div class="collapsible-body">
+                        <p>users</p>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+-->
+    <div class="container left">
+        <div class="contaier container-rooms">
+            <ul class="collection rooms">
+                {{#each rooms}}
+                <a href="#" class="collection-item">{{name}}</a> {{/each}}
+            </ul>
+        </div>
+    </div>
+</template>
+
 
 <template name="input">
     <div class="row">

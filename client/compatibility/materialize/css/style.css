@@ -13,3 +13,11 @@
 span.message-text {
     word-wrap: break-word;
 }
+
+ul.rooms {
+    width: 30%;
+}
+
+a.message-user-name:hover {
+    color: #ff9800 !important;
+}

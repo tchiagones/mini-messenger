@@ -23,8 +23,6 @@ Meteor.publish('Messages', function () {
     return Messages.find();
 });
 
-Meteor.publish('ChatRooms', function () {
-    return ChatRooms.find({
-        name: 'global'
-    });
+Meteor.publish('Rooms', function () {
+    return Rooms.find();
 });
