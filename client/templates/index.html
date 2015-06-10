@@ -64,10 +64,7 @@
                 <div class="card-content white-text">
                     <span class="badge">{{> deleteButton}}</span>
                     <p>
-                        <span class="messageInfo">{{formatMessageDate time}} - </span>
-                        <a href="#" class="white-text message-user-name">
-                            <strong>{{name}}:</strong>
-                        </a>
+                        <span class="messageInfo">{{formatMessageDate time}} - </span> <strong>{{name}}:</strong>
                     </p>
                     <div class="container left">
                         <div class="row">
@@ -84,10 +81,7 @@
             <div class="card light-blue lighten-1">
                 <div class="card-content white-text">
                     <p>
-                        <span class="messageInfo">{{formatMessageDate time}} - </span>
-                        <a href="#" class="white-text">
-                            <strong>{{name}}:</strong>
-                        </a>
+                        <span class="messageInfo">{{formatMessageDate time}} - </span> {{>messageContact contactName = name contactId = userId}}
                     </p>
                     <div class="container left">
                         <div class="row">
@@ -112,30 +106,28 @@
 </template>
 
 <template name="rooms">
-    <!--
-<div class="container left">
-        <div class="contaier container-rooms">
-            <ul class="collapsible" data-collapsible="accordion">
-                {{#each rooms}}
-                <li>
-                    <div class="collapsible-header">{{name}}</div>
-                    <div class="collapsible-body">
-                        <p>users</p>
-                    </div>
-                </li>
-                {{/each}}
-            </ul>
-        </div>
-    </div>
--->
     <div class="container left">
         <div class="contaier container-rooms">
             <ul class="collection rooms">
-                {{#each rooms}}
-                <a href="#" class="collection-item">{{name}}</a> {{/each}}
+                {{> globalRoom}}{{#each rooms}} {{>room roomName = name roomId = _id}} {{/each}}
+                
             </ul>
         </div>
     </div>
+</template>
+
+<template name="messageContact">
+    <a href="#" class="white-text contact">
+        <strong>{{contactName}}:</strong>
+    </a>
+</template>
+
+<template name="room">
+    <a href="#" class="collection-item room-item">{{roomName}}</a>
+</template>
+
+<template name="globalRoom">
+    <a href="#" class="collection-item room-item">GLOBAL</a>
 </template>
 
 

@@ -1,3 +1,5 @@
+Session.setDefault('roomId', null)
+
 Meteor.subscribe("Messages");
 Meteor.subscribe("Rooms");
 
@@ -9,7 +11,10 @@ Meteor.users.deny({
 
 Template.messages.helpers({
     messages: function () {
-        return Messages.find({}, {
+        var roomId = Session.get('roomId');
+        return Messages.find({
+            roomId: roomId
+        }, {
             sort: {
                 time: -1
             }
@@ -26,6 +31,23 @@ Template.rooms.helpers({
     }
 });
 
+Template.room.events = {
+    'click .room-item': function (event) {
+        Session.set('roomId', this.roomId);
+        Meteor.call("getRoomMessages", roomId, function (error) {
+            console.log('erro: ' + error);
+        });
+    }
+}
+
+Template.globalRoom.events = {
+    'click .room-item': function (event) {
+        Session.set('roomId', null);
+        Meteor.call("getRoomMessages", null, function (error) {
+            console.log('erro: ' + error);
+        });
+    }
+}
 
 Template.message.helpers({
     isOwner: function () {
@@ -47,20 +69,27 @@ Template.input.events = {
             if (!message) return alert('escreva uma mensagem.');
             debugger;
             var name = document.getElementById('user').value;
-            var roomId;
+            var roomId = Session.get('roomId');;
             var userId = Meteor.userId();
 
             if (!Meteor.userId() &&
                 name == "") name = 'Anonymous';
 
-            Meteor.call("addMessage", name, message, function (error, messageId) {
-                console.log('message Id: ' + messageId);
+            Meteor.call("addMessage", name, message, roomId, function (error, messageId) {
+                if (messageId) document.getElementById('message').value = '';
             });
 
-            Materialize.toast('message added!', 4000)
+            materialAlert('message added!');
         }
     }
 }
+
+Template.messageContact.events = {
+    'click .contact': function (event) {
+        materialAlert('get a room you two');
+    }
+}
+
 
 Template.deleteButton.events = {
     'click': function (event) {
@@ -83,3 +112,7 @@ Template.registerHelper('formatMessageDate', function (date) {
 Accounts.ui.config({
     passwordSignupFields: "USERNAME_ONLY"
 });
+
+var materialAlert = function (message) {
+    Materialize.toast(message, 4000);
+}
