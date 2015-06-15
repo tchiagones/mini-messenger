@@ -21,3 +21,7 @@ ul.rooms {
 a.message-user-name:hover {
     color: #ff9800 !important;
 }
+
+div.container-rooms {
+    width: auto;
+}

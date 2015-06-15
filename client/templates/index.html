@@ -107,29 +107,56 @@
 
 <template name="rooms">
     <div class="container left">
-        <div class="contaier container-rooms">
-            <ul class="collection rooms">
+        <div class="contaier container-rooms center teal-text text-lighten-2">
+            <ul class="collapsible collection rooms" data-collapsible="accordion">
                 {{> globalRoom}}{{#each rooms}} {{>room roomName = name roomId = _id}} {{/each}}
-                
             </ul>
         </div>
     </div>
 </template>
 
 <template name="messageContact">
-    <a href="#" class="white-text contact">
+    <a href="#modalRoom" data-target="modalRoom" class="white-text contact modal-trigger">
         <strong>{{contactName}}:</strong>
     </a>
+    <div id="modalRoom" class="modal">
+        <div class="modal-content center light-blue-text">
+            <h4>Hey dude!</h4>
+            <p>Would you like to start a chat room with your buddy?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close red btn-flat ">Nope :(</a> {{> confirmNewRoom}}
+        </div>
+    </div>
+</template>
+
+<template name="confirmNewRoom">
+    <a href="#!" class="modal-action modal-close light-green btn-flat ">Yep :)</a>
 </template>
 
 <template name="room">
-    <a href="#" class="collection-item room-item">{{roomName}}</a>
+    <li>
+        <div class="collapsible-header"><a href="#" class="collection-item room-item">{{roomName}}</a>
+        </div>
+        <div class="collapsible-body">
+            <p>#username1</p>
+            <p>#username2</p>
+            <p>#username3</p>
+        </div>
+    </li>
+    <!--<a href="#" class="collection-item room-item">{{roomName}}</a>-->
 </template>
 
 <template name="globalRoom">
-    <a href="#" class="collection-item room-item">GLOBAL</a>
+    <li>
+        <div class="collapsible-header"><a href="#" class="collection-item room-item">GLOBAL</a>
+        </div>
+        <div class="collapsible-body">
+            <p>Everybody is here!</p>
+        </div>
+    </li>
+    <!--<a href="#" class="collection-item room-item">GLOBAL</a>-->
 </template>
-
 
 <template name="input">
     <div class="row">

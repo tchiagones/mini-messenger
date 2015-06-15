@@ -21,6 +21,11 @@ Meteor.methods({
             _id: id
         });
     },
+    addRoom: function (roomName) {
+        Rooms.insert({
+            'name': roomName
+        });
+    },
     getUser: function (userId) {
         var user = Meteor.users.find({
             _id: userId

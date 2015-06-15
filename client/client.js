@@ -3,6 +3,18 @@ Session.setDefault('roomId', null)
 Meteor.subscribe("Messages");
 Meteor.subscribe("Rooms");
 
+//Meteor.startup(function () {
+//if ($('section#main').hasClass('postlist')) {
+//    Session.set('pageTitle', 'Posts list');
+//};
+//$('.button-collapse').sideNav();
+//$('.modal-trigger').leanModal();
+
+//$('.modal-trigger').on('click', function () {
+//    $('#modal1').openModal();
+//});
+//});
+
 Meteor.users.deny({
     update: function () {
         return true;
@@ -38,6 +50,18 @@ Template.room.events = {
             console.log('erro: ' + error);
         });
     }
+}
+
+Template.room.rendered = function () {
+    $('.collapsible').collapsible({
+        accordion: false
+    });
+}
+
+Template.globalRoom.rendered = function () {
+    $('.collapsible').collapsible({
+        accordion: false
+    });
 }
 
 Template.globalRoom.events = {
@@ -79,14 +103,22 @@ Template.input.events = {
                 if (messageId) document.getElementById('message').value = '';
             });
 
-            materialAlert('message added!');
+            materialAlert('got ya!');
         }
     }
 }
 
+Template.messageContact.rendered = function () {
+    $('.modal-trigger').leanModal();
+}
+
 Template.messageContact.events = {
     'click .contact': function (event) {
-        materialAlert('get a room you two');
+        debugger;
+        if (this.contactId == Meteor.userId())
+            materialAlert('forever alone...');
+        else
+            materialAlert('get a room you two ;)');
     }
 }
 
@@ -99,6 +131,16 @@ Template.deleteButton.events = {
             });
     }
 }
+
+/*
+Template.confirmNewRoom.events = {
+    'click': function (event) {
+        Meteor.call("addRoom", function (error) {
+            console.log('Message removed');
+        });
+    }
+}
+*/
 
 Template.registerHelper('formatMessageDate', function (date) {
     var messageDate = new Date(date).setHours(0, 0, 0, 0, 0);
@@ -114,5 +156,5 @@ Accounts.ui.config({
 });
 
 var materialAlert = function (message) {
-    Materialize.toast(message, 4000);
+    Materialize.toast(message, 3000);
 }
