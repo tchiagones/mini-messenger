@@ -112,6 +112,10 @@ Template.messageContact.rendered = function () {
     $('.modal-trigger').leanModal();
 }
 
+Template.confirmNewRoom.rendered = function(){
+    $('.modal-trigger').leanModal();
+}
+
 Template.messageContact.events = {
     'click .contact': function (event) {
         debugger;

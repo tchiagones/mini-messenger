@@ -1,3 +1,5 @@
+process.env.MAIL_URL = "smtp://xxxxxx%40gmail.com:yyyyy@smtp.gmail.com:465/";
+
 Meteor.methods({
     addMessage: function (name, message, roomId) {
         console.log('Adding message');
@@ -26,6 +28,9 @@ Meteor.methods({
             'name': roomName
         });
     },
+    sendEmail: function (recipient) {
+        sendSMTPEmail("enzoelement@gmail.com");
+    },
     getUser: function (userId) {
         var user = Meteor.users.find({
             _id: userId
@@ -51,6 +56,14 @@ Meteor.methods({
 });
 
 
+var sendSMTPEmail = function (recipient) {
+    Email.send({
+        from: "neves.thiago7@gmail.com",
+        to: recipient,
+        subject: "Meteor Can Send Emails via Gmail",
+        text: "Its pretty easy to send emails via gmail with meteor."
+    });
+}
 
 var getUserNameOrNickName = function (nickname, userId) {
     var userName = nickname;

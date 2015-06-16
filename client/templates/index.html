@@ -123,15 +123,31 @@
         <div class="modal-content center light-blue-text">
             <h4>Hey dude!</h4>
             <p>Would you like to start a chat room with your buddy?</p>
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">room name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <a href="#modalSaveRoom" class="waves-light btn modal-action modal-close" data-target="modalSaveRoom">GO</a>
+                    </div>
+                </div>
+            </form>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close red btn-flat ">Nope :(</a> {{> confirmNewRoom}}
+            <a href="#!" class="modal-action modal-close btn-flat ">Nope :(</a> {{> confirmNewRoom}}
         </div>
     </div>
 </template>
 
 <template name="confirmNewRoom">
-    <a href="#!" class="modal-action modal-close light-green btn-flat ">Yep :)</a>
+    <a href="#modalSaveRoom" data-target="modalRoom" class="modal-action modal-close btn-flat modal-trigger">Yep :)</a>
+
+    <div id="modalSaveRoom" class="modal">
+        <div class="modal-content center light-blue-text">
+        </div>
+    </div>
 </template>
 
 <template name="room">
