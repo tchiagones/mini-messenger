@@ -126,24 +126,22 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="icon_prefix" type="text" class="validate">
+                    <input id="icon_prefix" type="text" class="validate roomName">
                         <label for="icon_prefix">room name</label>
                     </div>
                     <div class="input-field col s6">
-                        <a href="#modalSaveRoom" class="waves-light btn modal-action modal-close" data-target="modalSaveRoom">GO</a>
+                        <a href="#modalSaveRoom" class="waves-light btn modal-action modal-close createRoom" data-target="modalSaveRoom">GO</a>
                     </div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close btn-flat ">Nope :(</a> {{> confirmNewRoom}}
+            <a href="#!" class="modal-action modal-close btn-flat ">No thanks</a> {{> confirmNewRoom}}
         </div>
     </div>
 </template>
 
 <template name="confirmNewRoom">
-    <a href="#modalSaveRoom" data-target="modalRoom" class="modal-action modal-close btn-flat modal-trigger">Yep :)</a>
-
     <div id="modalSaveRoom" class="modal">
         <div class="modal-content center light-blue-text">
         </div>
