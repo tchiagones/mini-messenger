@@ -125,7 +125,7 @@ Template.messageContact.events = {
 	},
 	'click .createRoom': function(event){
 		debugger;
-		var roomName = event.delegateTarget.getElementsByClassName('roomName')[0].value;
+		var roomName = event.delegateTarget.getElementsByClassName('roomName')[0].value	;
 		if(!roomName)
 			alert("name the room.");
 		Meteor.call("addRoom", roomName,
